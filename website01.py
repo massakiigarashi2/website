@@ -17,6 +17,8 @@ nome = df['Nome']
 #st.write(df['email'])
 
 image = Image.open('desenvolvimento.jpg')
+image1 = Image.open('BibliografiaBASICA.jpg')
+image2 = Image.open('BibliografiaComplementar1.jpg')
 st.image(image, caption='Web site em desenvolvimento')
 st.markdown(":books:")	
 st.title("LINGUAGENS DE PROGRAMAÇÃO")
@@ -70,6 +72,7 @@ if task1 == "Linguagem de Programação C++":
     ##### Saída e Entrada de Dados / Tipos de Variáveis
     - [**CAP 03**](#cap-03)
     ##### Operadores e Operações básicas
+    - [**BIBLIOGRAFIA**](#bibliografia)    
     """, unsafe_allow_html=True)
     
     st.header('CAP 01')
@@ -430,31 +433,22 @@ if task1 == "Linguagem de Programação C++":
     st.header('Logicos')
     st.header('Bit-a-Bit')
    
-    st.title("Referências Bibliográficas")
-    st.info(
-    """
-    **Bibliografia Básica**
-    - PAMBOUKIAN, Sérgio V. D.; ZAMBONI, Lincoln C.; BARROS, Edson A. R. Aplicações Científicas em C++. 4. ed. São Paulo: Páginas & Letras, 2015. V1. 230 p.
-
-    **Bibliografia Complementar**
-    - CAPRON, Harriet L.; JOHNSON, J. A. Introdução à informática. 8. ed. São Paulo: Pearson/Prentice Hall, 2008. 
-
-    - DEITEL, Harvey M.; DEITEL, Paul J. C++: como programar. 5. ed. São Paulo: Pearson Prentice Hall, 2008. 1163 p. 
-
-    - HORSTMANN, Cay. Conceitos de computação com o essencial de C++. Tradução: Carlos A. L. Lisbôa e Maria Lúcia B. Lisbôa. Porto Alegre: Bookman Editora (Grupo A), 2005.p.36; p.157-199.Disponível em: < https://integrada.minhabiblioteca.com.br/#/books/9788577801770/pageid/155>
-
-    - JOYANES AGUILAR, Luis. Programação em C++: algoritmos, estruturas de dados e objetos. 2. ed. São Paulo: McGraw-Hill, 2008. 768 p. 
-
-    - MIZRAHI, Victorine Viviane. Treinamento em linguagem C++: módulo 1. 2. ed. São Paulo: Pearson Prentice Hall, 2009. 234 p. 
-
-    - MIZRAHI, Victorine Viviane. Treinamento em linguagem C++: módulo 2. 2. ed. São Paulo: Pearson Prentice Hall, 2009. 309 p. 
-
-    - SAVITCH, Walter J. C++ absoluto. São Paulo: Pearson/Addison Wesley, 2004. 612 p. 
-
-    - STROUSTRUP, B. The C++ programming language. Special ed., 12th printing Boston: Addison-Wesley, 2005.
-
-    """
-    )    
+    st.title("BIBLIOGRAFIA")
+    st.subheader("**Bibliografia Básica**")
+    st.image(image1, width=200, caption='Bibliografia Básica')    
+    st.write("- PAMBOUKIAN, Sérgio V. D.; ZAMBONI, Lincoln C.; BARROS, Edson A. R. Aplicações Científicas em C++. 4. ed. São Paulo: Páginas & Letras, 2015. V1. 230 p.")
+    
+    st.write("**Bibliografia Complementar**")
+    st.image(image2, width=700, caption='Bibliografia Complementar')
+    st.write("- CAPRON, Harriet L.; JOHNSON, J. A. Introdução à informática. 8. ed. São Paulo: Pearson/Prentice Hall, 2008.")
+    st.write("- DEITEL, Harvey M.; DEITEL, Paul J. C++: como programar. 5. ed. São Paulo: Pearson Prentice Hall, 2008. 1163 p.")
+    st.write("- HORSTMANN, Cay. Conceitos de computação com o essencial de C++. Tradução: Carlos A. L. Lisbôa e Maria Lúcia B. Lisbôa. Porto Alegre: Bookman Editora (Grupo A), 2005.p.36; p.157-199.Disponível em: < https://integrada.minhabiblioteca.com.br/#/books/9788577801770/pageid/155>")
+    st.write("- JOYANES AGUILAR, Luis. Programação em C++: algoritmos, estruturas de dados e objetos. 2. ed. São Paulo: McGraw-Hill, 2008. 768 p.")
+    st.write("- MIZRAHI, Victorine Viviane. Treinamento em linguagem C++: módulo 1. 2. ed. São Paulo: Pearson Prentice Hall, 2009. 234 p.")
+    st.write("- MIZRAHI, Victorine Viviane. Treinamento em linguagem C++: módulo 2. 2. ed. São Paulo: Pearson Prentice Hall, 2009. 309 p.")
+    st.write("- SAVITCH, Walter J. C++ absoluto. São Paulo: Pearson/Addison Wesley, 2004. 612 p.")
+    st.write("- STROUSTRUP, B. The C++ programming language. Special ed., 12th printing Boston: Addison-Wesley, 2005.")
+   
 # Security
 #passlib,hashlib,bcrypt,scrypt
 
