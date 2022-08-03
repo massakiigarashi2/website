@@ -6,6 +6,12 @@ from PIL import Image
 from io import BytesIO
 import requests
 
+#ANALISE DE DADOS
+import streamlit as st
+import pandas as pd
+import altair as alt
+from urllib.error import URLError
+
 r = requests.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vTjhdfDYTI3HNP0wpxBAp_YePhfyBj9GlLAmFgW2zUsTQiWJwkY_iUvVuhiT9AD2X81uJQalB89rYlw/pub?gid=2112212887&single=true&output=csv')
 DB = r.content
 df = pd.read_csv(BytesIO(DB), index_col=0)
@@ -57,9 +63,61 @@ st.warning("IGARASHI, Massaki de O. LINGUAGENS DE PROGRAMAÇÃO. Campinas - SP, 
     
 task1 = st.selectbox("👈 Selecione a linguagem desejada:",
                     ["Linguagem de Programação C++", 
-                     "Linguagem de Programação Pyhton",                                
+                     "Análise de Dados",                                
                      "Linguagem de Programação R"                           
                      ])                                  
+if task1 == "Análise de Dados": 
+    #st.set_page_config(page_title="DataFrame Demo", page_icon="📊")
+
+    st.markdown("# DataFrame Demo")
+    st.sidebar.header("DataFrame Demo")
+    st.write(
+        """This demo shows how to use `st.write` to visualize Pandas DataFrames.
+    (Data courtesy of the [UN Data Explorer](http://data.un.org/Explorer.aspx).)"""
+    )
+
+
+    @st.cache
+    def get_UN_data():
+        AWS_BUCKET_URL = "http://streamlit-demo-data.s3-us-west-2.amazonaws.com"
+        df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
+        return df.set_index("Region")
+
+
+    try:
+        df = get_UN_data()
+        countries = st.multiselect(
+            "Choose countries", list(df.index), ["China", "United States of America"]
+        )
+        if not countries:
+            st.error("Please select at least one country.")
+        else:
+            data = df.loc[countries]
+            data /= 1000000.0
+            st.write("### Gross Agricultural Production ($B)", data.sort_index())
+
+            data = data.T.reset_index()
+            data = pd.melt(data, id_vars=["index"]).rename(
+                columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
+            )
+            chart = (
+                alt.Chart(data)
+                .mark_area(opacity=0.3)
+                .encode(
+                    x="year:T",
+                    y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
+                    color="Region:N",
+                )
+            )
+            st.altair_chart(chart, use_container_width=True)
+    except URLError as e:
+        st.error(
+            """
+            **This demo requires internet access.**
+            Connection error: %s
+        """
+            % e.reason
+        )
 
 if task1 == "Linguagem de Programação C++": 
     
