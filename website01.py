@@ -549,7 +549,7 @@ def main():
 	menu = ["Cursos",
             "Admin",
             "Contato",
-            #"SignUp"
+            "SignUp"
             ]
 	choice = st.sidebar.selectbox("Menu",menu)
 
